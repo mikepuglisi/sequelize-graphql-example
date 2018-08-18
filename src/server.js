@@ -1,28 +1,31 @@
+
 import { GraphQLServer } from 'graphql-yoga';
 import { createContext, EXPECTED_OPTIONS_KEY } from 'dataloader-sequelize';
 import { resolver } from 'graphql-sequelize';
 import models from './models';
+import typeDefs from './schema';
 
-const typeDefs = `
-  type Query {
-    pet(id: ID!): Pet
-    pets: [Pet]
-    user(id: ID!): User
-    users: [User]
-  }
 
-  type User {
-    id: ID!
-    name: String
-    pets: [Pet]
-  }
+// const typeDefs = `
+//   type Query {
+//     pet(id: ID!): Pet
+//     pets: [Pet]
+//     user(id: ID!): User
+//     users: [User]
+//   }
 
-  type Pet {
-    id: ID!
-    name: String
-    owner: User
-  }
-`;
+//   type User {
+//     id: ID!
+//     name: String
+//     pets: [Pet]
+//   }
+
+//   type Pet {
+//     id: ID!
+//     name: String
+//     owner: User
+//   }
+// `;
 
 const resolvers = {
   Query: {
