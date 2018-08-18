@@ -8,9 +8,11 @@ import models from './models';
 async function start() {
   // Make sure the database tables are up to date
   await models.sequelize.sync({ force: true });
-
+  
   // Create sample data
-  const foo = await models.User.create({ name: 'Foo' });
+  const property = await models.Property.create({ address: '123 phony st' });  
+
+  const foo = await models.User.create({ name: 'Foo' });  
   const bar = await models.User.create({ name: 'Bar' });
   await foo.createPet({ name: 'Bat' });
   await bar.createPet({ name: 'Baz' });

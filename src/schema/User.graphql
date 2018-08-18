@@ -1,10 +1,13 @@
-  type Query {
+scalar GraphQLEmail
+
+type Query {
     user(id: ID!): User
     users: [User]
-  }
-  
-  type User {
+}
+
+type User {
     id: ID!
-    name: String
+    name: String,
+    email: GraphQLEmail,
     pets: [Pet]
-  }
+}

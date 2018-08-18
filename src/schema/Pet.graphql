@@ -1,4 +1,5 @@
   type Query {
+    testString: String
     pet(id: ID!): Pet
     pets: [Pet]
   }

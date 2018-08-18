@@ -5,12 +5,14 @@
   "description": "An example of using graphql-sequelize in a NodeJS application",
   "scripts": {
     "build": "NODE_ENV=production babel src -d build",
-    "dev": "nodemon index.js",
+    "dev": "nodemon --inspect -e js,graphql index.js",
     "start": "node index.js"
   },
   "dependencies": {
+    "casual": "^1.5.19",
     "dataloader-sequelize": "^1.7.2",
     "express": "^4.16.3",
+    "graphql-custom-types": "^1.4.0",
     "graphql-relay": "^0.5.5",
     "graphql-sequelize": "^8.3.1",
     "graphql-yoga": "^1.14.12",
