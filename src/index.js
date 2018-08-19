@@ -11,6 +11,7 @@ async function start() {
   
   // Create sample data
   const foo = await models.User.create({ name: 'Foo' });  
+  
   const bar = await models.User.create({ name: 'Bar' });
 
   const place = await models.Place.create({ title: 'Xanadu: 8BR/6BA Ocean-to-River PALACE with Pool', description: 'Xanadu: “An idyllic, exotic, luxurious place" (Webster’s Dictionary) 8BR/6BA Ocean-to-River paradise. Room for 20! Heated oceanfront pool. Private elevator. Private dock & more. Directly ON the beach! 4 floors of luxury living, oceanfront chef\'s kitchen, & so much more. Minutes from major international airports. Complimentary kayaks, paddleboards, bicycles, snorkel & fishing gear & more. (Jetskis & boats also available). FULLY STOCKED. Selected Monday nights only $129!'});  
@@ -21,7 +22,7 @@ async function start() {
   
 
   console.dir(foo.__proto__)
-  console.dir(place.__proto__)
+  // console.dir(place.__proto__)
  // console.dir(mutatedPlace)
   await foo.createPet({ name: 'Bat' });
   await bar.createPet({ name: 'Baz' });
