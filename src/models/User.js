@@ -8,9 +8,9 @@ class User extends Model {
       foreignKey: 'ownerId',
       as: 'pets',
     });
-    User.Properties = User.hasMany(models.Property, {
+    User.Properties = User.hasMany(models.Place, {
       foreignKey: 'ownerId',
-      as: 'properties',
+      as: 'places',
     });    
   }
 }

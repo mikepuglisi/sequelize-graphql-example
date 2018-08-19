@@ -1,10 +1,18 @@
 
 import { GraphQLServer, MockList } from 'graphql-yoga';
+import {
+  GraphQLEmail,
+  GraphQLURL,
+  GraphQLDateTime,
+  GraphQLLimitedString,
+  GraphQLPassword,
+  GraphQLUUID
+} from 'graphql-custom-types';
 import casual from 'casual';
 import { createContext, EXPECTED_OPTIONS_KEY } from 'dataloader-sequelize';
 import { resolver } from 'graphql-sequelize';
 import models from './models';
-import typeDefs from './schema';
+// import typeDefs from './schema';
 
 
 
@@ -35,7 +43,7 @@ const resolvers = {
     pets: resolver(models.Pet),
     user: resolver(models.User),
     users: resolver(models.User),
-    properties: resolver(models.Property),
+    places: resolver(models.Place),
   },
   User: {
     pets: resolver(models.User.Pets),
@@ -51,26 +59,32 @@ resolver.contextToOptions = { [EXPECTED_OPTIONS_KEY]: EXPECTED_OPTIONS_KEY };
 
 const mocks = {
   String: () => 'It works!',
+  Money: () => Math.floor(Math.random() * (200.00 - 100.00 + 100.00)) + 100.00,
+  GraphQLURL: () => `${casual.url}${casual.word}.png`,
   Query: () => ({
-    properties: () => {
+    places: () => {
       return new MockList([1, 7])
     },
     users: (root, args) => {
       return new MockList([1, 7])
     },
-    
+    amenities: (root, args) => {
+      return new MockList([1, 4])
+    },    
   }),
-  Property: () => ({ address: casual.address }),
+  Place: () => ({ title: casual.title, description: casual.description, address: casual.address }),
+  Location: () => ({ address: casual.address, city: casual.city, state: casual.state_abbr, country: 'US' }),
   User: () => ({ name: casual.first_name, email: casual.email }),
+  Amenity: () => ({ name: casual.word, description: casual.description }),
   Pet: () => ({ name: casual.first_name }),
   Author: () => ({ firstName: () => casual.first_name, lastName: () => casual.last_name }),
   Post: () => ({ title: casual.title, text: casual.sentences(3) }),
 };
 
 const server = new GraphQLServer({
-  typeDefs,
+  typeDefs: './src/schema.graphql',  
   resolvers,
-  mocks: false,
+  mocks: mocks,
   context(req) {
     // For each request, create a DataLoader context for Sequelize to use
     const dataloaderContext = createContext(models.sequelize);

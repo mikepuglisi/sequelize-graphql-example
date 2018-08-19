@@ -1,25 +1,25 @@
 import Sequelize, { Model } from 'sequelize';
 
-class Property extends Model {
-  static tableName = 'properties';
+class Place extends Model {
+  static tableName = 'places';
 
   static associate(models) {
-    Property.Owner = Property.belongsTo(models.User, {
+    Place.Owner = Place.belongsTo(models.User, {
       as: 'owner',
     });
   }
 }
 
 export default (sequelize) => {
-  Property.init({
+  Place.init({
     address: Sequelize.STRING,
     ownerId: {
       type: Sequelize.INTEGER,
     },
   }, {
     sequelize,
-    tableName: Property.tableName,
+    tableName: Place.tableName,
   });
 
-  return Property;
+  return Place;
 };

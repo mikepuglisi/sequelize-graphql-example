@@ -1,0 +1,121 @@
+scalar GraphQLEmail
+scalar GraphQLURL
+scalar Money
+
+type Query {
+    testString: String
+    user(id: ID!): User
+    users: [User]
+    place(id: ID!): Place
+    places: [Place]    
+    pet(id: ID!): Pet
+    pets: [Pet]    
+}
+
+type User {
+    id: ID!
+    name: String,
+    email: GraphQLEmail,
+    pets: [Pet]
+}
+
+type Place {
+    id: ID!
+    title: String
+    description: String
+    location: Location
+    owner: User    
+    amenities: [Amenity]
+    pricing: Pricing!
+    photos: [Photo]
+}
+
+type Pricing {
+    id: ID!
+    place: Place!
+    monthlyDiscount: Int
+    weeklyDiscount: Int
+    perNight: Money!
+    smartPricing: Boolean!
+    basePrice: Money!
+    averageWeekly: Money!
+    averageMonthly: Money!
+    cleaningFee: Money
+    securityDeposit: Money
+    extraGuests: Int
+    weekendPricing: Money  
+}
+
+type Location {
+  id: ID!
+  lat: Float!
+  lng: Float!
+  address: String
+  city: String
+  state: String
+  country: String  
+  directions: String
+}
+
+type Photo {
+    id: ID!
+    url: GraphQLURL    
+}
+
+type Pet {
+    id: ID!
+    name: String
+    owner: User
+}
+
+type Amenity {
+    id: ID!
+    name: String
+    description: String
+}
+
+type Amenities {
+  airConditioning: Boolean!
+  babyBath: Boolean!
+  babyMonitor: Boolean!
+  babysitterRecommendations: Boolean!
+  bathtub: Boolean!
+  breakfast: Boolean!
+  buzzerWirelessIntercom: Boolean!
+  cableTv: Boolean!
+  changingTable: Boolean!
+  childrensBooksAndToys: Boolean!
+  childrensDinnerware: Boolean!
+  crib: Boolean!
+  doorman: Boolean!
+  dryer: Boolean!
+  elevator: Boolean!
+  essentials: Boolean!
+  familyKidFriendly: Boolean!
+  freeParkingOnPremises: Boolean!
+  freeParkingOnStreet: Boolean!
+  gym: Boolean!
+  hairDryer: Boolean!
+  hangers: Boolean!
+  heating: Boolean!
+  hotTub: Boolean!
+  id: ID!
+  indoorFireplace: Boolean!
+  internet: Boolean!
+  iron: Boolean!
+  kitchen: Boolean!
+  kayaks: Boolean!
+  laptopFriendlyWorkspace: Boolean!
+  paddleboards: Boolean!
+  paidParkingOffPremises: Boolean!
+  petsAllowed: Boolean!
+  pool: Boolean!
+  privateEntrance: Boolean!
+  shampoo: Boolean!
+  smokingAllowed: Boolean!
+  suitableForEvents: Boolean!
+  tv: Boolean!
+  washer: Boolean!
+  wheelchairAccessible: Boolean!
+  wirelessInternet: Boolean!
+}

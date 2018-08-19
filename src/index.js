@@ -10,7 +10,7 @@ async function start() {
   await models.sequelize.sync({ force: true });
   
   // Create sample data
-  const property = await models.Property.create({ address: '123 phony st' });  
+  const place = await models.Place.create({ address: '123 phony st' });  
 
   const foo = await models.User.create({ name: 'Foo' });  
   const bar = await models.User.create({ name: 'Bar' });
