@@ -1,18 +1,18 @@
 
-import { GraphQLServer, MockList } from 'graphql-yoga';
-import {
+const { GraphQLServer, MockList, GraphQLTools } = require('graphql-yoga');
+const {
   GraphQLEmail,
   GraphQLURL,
   GraphQLDateTime,
   GraphQLLimitedString,
   GraphQLPassword,
   GraphQLUUID
-} from 'graphql-custom-types';
-import casual from 'casual';
-import { createContext, EXPECTED_OPTIONS_KEY } from 'dataloader-sequelize';
-import { resolver } from 'graphql-sequelize';
-import models from './models';
-// import typeDefs from './schema';
+} = require('graphql-custom-types');
+const casual = require('casual');
+const { createContext, EXPECTED_OPTIONS_KEY } = require('dataloader-sequelize');
+const { resolver } = require('graphql-sequelize');
+const models = require('./models');
+// const typeDefs = require('./schema');
 
 
 
@@ -97,4 +97,4 @@ const server = new GraphQLServer({
   },
 });
 
-export default server;
+module.exports = server;

@@ -48,12 +48,8 @@ type Pricing {
 
 type Location {
   id: ID!
-  lat: Float!
-  lng: Float!
-  address: String
-  city: String
-  state: String
-  country: String  
+  latitude: Float!
+  longitude: Float!
   directions: String
 }
 

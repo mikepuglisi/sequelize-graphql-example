@@ -1,7 +1,6 @@
-import Sequelize, { Model } from 'sequelize';
+const Sequelize = require('sequelize');
 
-class Pet extends Model {
-  static tableName = 'pets';
+class Pet extends Sequelize.Model {
 
   static associate(models) {
     Pet.Owner = Pet.belongsTo(models.User, {
@@ -10,7 +9,7 @@ class Pet extends Model {
   }
 }
 
-export default (sequelize) => {
+module.exports = (sequelize) => {
   Pet.init({
     name: Sequelize.STRING,
     ownerId: {
@@ -18,7 +17,7 @@ export default (sequelize) => {
     },
   }, {
     sequelize,
-    tableName: Pet.tableName,
+    tableName: 'pets',
   });
 
   return Pet;

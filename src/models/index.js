@@ -1,8 +1,8 @@
-import fs from 'fs';
-import path from 'path';
-import Sequelize from 'sequelize';
+const fs = require('fs');
+const path = require('path');
+const Sequelize = require('sequelize');
 
-import sequelize from '../config/database';
+const sequelize = require('../config/database');
 
 const db = {
   sequelize,
@@ -26,4 +26,4 @@ Object.keys(db).forEach((modelName) => {
   }
 });
 
-export default db;
+module.exports = db;

@@ -1,8 +1,9 @@
-import Sequelize from 'sequelize';
+const Sequelize = require('sequelize');
 
 const sequelize = new Sequelize('graphql_sequelize_test', 'root', '', {
   host: 'localhost',
   dialect: 'sqlite',
+  storage: './database.sqlite',
 });
 
-export default sequelize;
+module.exports = sequelize;

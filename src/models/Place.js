@@ -1,25 +1,30 @@
-import Sequelize, { Model } from 'sequelize';
+// https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/
+const Sequelize = require('sequelize');
 
-class Place extends Model {
-  static tableName = 'places';
-
+class Place extends Sequelize.Model {
   static associate(models) {
     Place.Owner = Place.belongsTo(models.User, {
       as: 'owner',
     });
+    Place.Location = Place.belongsTo(models.Location, {
+      as: 'location',
+    });    
   }
 }
 
-export default (sequelize) => {
+module.exports = (sequelize) => {
   Place.init({
     title: Sequelize.STRING,
     description: Sequelize.STRING,    
     ownerId: {
       type: Sequelize.INTEGER,
     },
+    locationId: {
+      type: Sequelize.INTEGER,
+    },    
   }, {
     sequelize,
-    tableName: Place.tableName,
+    tableName: 'places',
   });
 
   return Place;
