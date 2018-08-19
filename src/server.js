@@ -84,7 +84,7 @@ const mocks = {
 const server = new GraphQLServer({
   typeDefs: './src/schema.graphql',  
   resolvers,
-  mocks: mocks,
+  mocks: false,
   context(req) {
     // For each request, create a DataLoader context for Sequelize to use
     const dataloaderContext = createContext(models.sequelize);

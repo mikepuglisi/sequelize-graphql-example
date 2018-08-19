@@ -12,7 +12,8 @@ class Place extends Model {
 
 export default (sequelize) => {
   Place.init({
-    address: Sequelize.STRING,
+    title: Sequelize.STRING,
+    description: Sequelize.STRING,    
     ownerId: {
       type: Sequelize.INTEGER,
     },

@@ -1,0 +1,27 @@
+{
+  places {
+    title,
+    description,
+    pricing {
+      perNight,
+      basePrice,
+      smartPricing
+    }
+    photos {
+      url
+    }    
+    amenities {
+      name
+      description
+    }    
+    location {
+      address
+      city
+      state
+      country
+      lat
+      lng
+    }
+    id
+  }
+}
