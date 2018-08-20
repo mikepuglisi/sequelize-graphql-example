@@ -12,6 +12,9 @@ const casual = require('casual');
 const { createContext, EXPECTED_OPTIONS_KEY } = require('dataloader-sequelize');
 const { resolver } = require('graphql-sequelize');
 const models = require('./models');
+
+
+
 // const typeDefs = require('./schema');
 
 
@@ -48,6 +51,9 @@ const resolvers = {
   User: {
     pets: resolver(models.User.Pets),
   },
+  Place: {
+    location: resolver(models.Place.Location),
+  },  
   Pet: {
     owner: resolver(models.Pet.Owner),
   },
@@ -97,4 +103,21 @@ const server = new GraphQLServer({
   },
 });
 
+
+const app = server.express;
+
+app.use('/sequelize', async (req, res) => {
+  //const results = await models.Place.findAll()
+
+
+  const results = await models.Place.findAll({
+      include: [{
+          model: models.Location
+      }]
+  })
+
+  console.dir(results[1])
+
+  res.send('it works');
+})
 module.exports = server;

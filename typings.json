@@ -1,0 +1,5 @@
+{
+  "globalDependencies": {
+    "sqlite3": "registry:dt/sqlite3#2.2.3+20160724070935"
+  }
+}

@@ -6,8 +6,10 @@ class Place extends Sequelize.Model {
     Place.Owner = Place.belongsTo(models.User, {
       as: 'owner',
     });
-    Place.Location = Place.belongsTo(models.Location, {
-      as: 'location',
+    Place.Location = Place.hasOne(models.Location, {
+      // as: 'location',
+      foreignKey: 'placeId', 
+      constraints: false
     });    
   }
 }

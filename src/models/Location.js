@@ -4,6 +4,12 @@ const Sequelize = require('sequelize');
 class Location extends Sequelize.Model {
 
   static associate(models) {
+    // Location.Place = Location.hasOne(models.Place, {
+    //   as: 'location',
+    //   foreignKey: 'locationId', 
+    //   constraints: false
+    // });
+
     // Location.Place = Location.belongsTo(models.Place, {
     //   foreignKey: 'locationId',
     //   as: 'location',
@@ -17,7 +23,7 @@ class Location extends Sequelize.Model {
   }
 }
 
-module.exports = (sequelize) => {
+module.exports = (sequelize) => {  
   Location.init({
     directions: Sequelize.STRING,
     latitude: {
@@ -31,7 +37,10 @@ module.exports = (sequelize) => {
         allowNull: true,
         defaultValue: null,
         validate: { min: -180, max: 180 }
-    },      
+    },   
+    placeId: {
+      type: Sequelize.INTEGER,
+    },          
     // description: Sequelize.STRING,    
     // ownerId: {
     //   type: Sequelize.INTEGER,

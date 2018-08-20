@@ -22,9 +22,11 @@
     "sqlite3": "^4.0.1"
   },
   "devDependencies": {
+    "@types/sequelize": "github:types/sequelize",
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.7.0",
-    "nodemon": "^1.18.3"
+    "nodemon": "^1.18.3",
+    "sequelize-typescript": "^0.6.6"
   }
 }

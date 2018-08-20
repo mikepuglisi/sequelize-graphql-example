@@ -23,6 +23,7 @@ type Place {
     id: ID!
     title: String
     description: String
+    locationId: Int
     location: Location
     owner: User    
     amenities: [Amenity]
