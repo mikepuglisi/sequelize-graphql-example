@@ -66,7 +66,7 @@ resolver.contextToOptions = { [EXPECTED_OPTIONS_KEY]: EXPECTED_OPTIONS_KEY };
 const mocks = {
   String: () => 'It works!',
   Money: () => Math.floor(Math.random() * (200.00 - 100.00 + 100.00)) + 100.00,
-  GraphQLURL: () => `${casual.url}${casual.word}.png`,
+  GraphQLURL: () => 'https://via.placeholder.com/640x480',
   Query: () => ({
     places: () => {
       return new MockList([1, 7])
@@ -108,8 +108,8 @@ const app = server.express;
 
 app.use('/sequelize', async (req, res) => {
   //const results = await models.Place.findAll()
-
-
+  
+  
   const results = await models.Place.findAll({
       include: [{
           model: models.Location
