@@ -1,5 +1,6 @@
 
 const { GraphQLServer, MockList, GraphQLTools } = require('graphql-yoga');
+const voyagerMiddleware = require('graphql-voyager/middleware');
 const {
   GraphQLEmail,
   GraphQLURL,
@@ -105,6 +106,8 @@ const server = new GraphQLServer({
 
 
 const app = server.express;
+
+app.use('/voyager', voyagerMiddleware.express({ endpointUrl: '/' }));
 
 app.use('/sequelize', async (req, res) => {
   //const results = await models.Place.findAll()
